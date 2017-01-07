@@ -290,6 +290,28 @@
                         </tr>
                     </table>
                 </section>
+                <section id="wpt-markers" class="tab-content">
+                    <table class="form-table">
+                        <?php
+                        if(is_array($markers) && count($markers)) {
+                            foreach ($markers as $key => $marker) {
+                                $lat = (is_array($marker) && array_key_exists('lat', $marker)) ? $marker['lat'] : 0;
+                                $long = (is_array($marker) && array_key_exists('long', $marker)) ? $marker['long'] : 0;
+                                $title = (is_array($marker) && array_key_exists('title', $marker)) ? $marker['title'] : "Title";
+                                ?>
+                                <tr>
+                                    <th scope="row"><?php echo __('Marker', 'ank-google-map') . ' ' . $key; ?></th>
+                                    <td><label><input placeholder="<?php _e('Longitude', 'ank-google-map'); ?>"
+                                                      type="text" name="" value="<?php echo esc_attr($lat); ?>"></label></td>
+                                    <td><label><input placeholder="<?php _e('Latitude', 'ank-google-map'); ?>"
+                                                      type="text" name="" value="<?php echo esc_attr($long); ?>"></label></td>
+                                    <td><label><input placeholder="<?php _e('Title', 'ank-google-map'); ?>" type="text"
+                                                      name="" value="<?php echo esc_attr($title); ?>"></label></td>
+                                </tr>
+                            <?php }
+                        }?>
+                    </table>
+                </section>
             </div>
             <?php submit_button() ?>
         </form>

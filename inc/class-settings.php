@@ -108,7 +108,14 @@ class Settings
             extract(array(
                 'db' => get_option('ank_google_map'),
                 'option_group' => self::PLUGIN_OPTION_GROUP,
-                'styles' => $this->util->get_styles()
+                'styles' => $this->util->get_styles(),
+                'markers' => array(
+                    array(
+                        'lat'   => "28.613939100000003",
+                        'long'  => "77.20902120000005",
+                        'title' => "Title X"
+                    )
+                ),
             ));
             require $file_path;
         } else {
