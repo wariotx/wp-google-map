@@ -310,6 +310,7 @@
                                                       type="text" name="ank_google_map[markers][<?php echo $key; ?>][long]" value="<?php echo esc_attr($long); ?>"></label></td>
                                     <td><label><input placeholder="<?php _e('Title', 'ank-google-map'); ?>" type="text"
                                                       name="ank_google_map[markers][<?php echo $key; ?>][title]" value="<?php echo esc_attr($title); ?>"></label></td>
+                                    <td><a class="button button-small remove-button" href="#" title="Remove Marker">X</a></td>
                                 </tr>
                             <?php }
                         } else {
@@ -326,9 +327,11 @@
                                                   type="text" name="ank_google_map[markers][<?php echo $key; ?>][long]" value="<?php echo esc_attr($long); ?>"></label></td>
                                 <td><label><input placeholder="<?php _e('Title', 'ank-google-map'); ?>" type="text"
                                                   name="ank_google_map[markers][<?php echo $key; ?>][title]" value="<?php echo esc_attr($title); ?>"></label></td>
+                                <td><a class="button button-small remove-button" href="#" title="Remove Marker">X</a></td>
                             </tr>
                         <?php } ?>
                     </table>
+                    <a class="button add-button" href="#" title="Add Marker">Add</a>
                 </section>
             </div>
             <?php submit_button() ?>
