@@ -292,5 +292,26 @@
         var $vm = $(this);
         $vm.closest('tr').remove();
         console.log($vm);
+    }).on('click.agm', '.add-button', function (e) {
+        e.preventDefault();
+        var $vm = $(this);
+        var tmpl = template.format("","","","");
+        console.log(tmpl);
+        $vm.parent().find('table tbody').append(tmpl);
     });
+    var template = '<tr><th scope="row">Marker {$0}</th>'+
+        '<td><label><input placeholder="Longitude" type="text" name="ank_google_map[markers][{$0}][lat]" value="{$1}"></label></td>'+
+        '<td><label><input placeholder="Latitude" type="text" name="ank_google_map[markers][{$0}][long]" value="{$2}"></label></td>'+
+        '<td><label><input placeholder="Title" type="text" name="ank_google_map[markers][{$0}][title]" value="{$3}"></label></td>'+
+        '<td><a class="button button-small remove-button" href="#" title="Remove Marker">X</a></td>'+
+        '</tr>';
+    String.prototype.format = function() {
+        var args = arguments;
+        return this.replace(/{\$(\d+)}/g, function(match, number) {
+            return typeof args[number] != 'undefined'
+                ? args[number]
+                : match
+                ;
+        });
+    };
 })(window, document, jQuery);
