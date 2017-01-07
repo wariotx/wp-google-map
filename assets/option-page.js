@@ -298,6 +298,17 @@
         }
         $vm.closest('tr').remove();
         console.log($vm);
+        var text = "Marker {$0}";
+        var lat_text = "ank_google_map[markers][{$0}][lat]";
+        var long_text = "ank_google_map[markers][{$0}][long]";
+        var title_text = "ank_google_map[markers][{$0}][title]";
+        $.each(markers_table.find('table tr'), function (idx, element) {
+            var $el = $(element);
+            $el.find('th').text(text.format(idx));
+            $el.find('input[placeholder^="Longitude"]').attr("name",lat_text.format(idx));
+            $el.find('input[placeholder^="Latitude"]').attr("name",long_text.format(idx));
+            $el.find('input[placeholder^="Title"]').attr("name",title_text.format(idx));
+        });
     }).on('click.agm', '.add-button', function (e) {
         e.preventDefault();
         var $vm = $(this);
