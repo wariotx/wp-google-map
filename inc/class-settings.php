@@ -156,7 +156,7 @@ class Settings
             $errors[] = __('Invalid Longitude format', 'ank-google-map');
             $out['map_Lng'] = '0';
         }
-        $out['markers'] = is_array($in['markers']) ? $in['markers'] : array();
+        $out['markers'] = array();
         foreach ($in['markers'] as $key => $marker) {
             $out['markers'][$key]['lat']   = sanitize_text_field($in['markers'][$key]['lat']);
             $out['markers'][$key]['long']  = sanitize_text_field($in['markers'][$key]['long']);
