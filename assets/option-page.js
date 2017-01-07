@@ -287,4 +287,10 @@
             || navigator.maxTouchPoints;       // works on IE10/11 and Surface
     }
 
+    $('#wpt-markers').on('click.agm',  '.remove-button', function (e) {
+        e.preventDefault();
+        var $vm = $(this);
+        $vm.closest('tr').remove();
+        console.log($vm);
+    });
 })(window, document, jQuery);
