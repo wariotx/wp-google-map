@@ -110,6 +110,16 @@
             title: 'Current Location',
             icon: opt.marker.file || opt.marker.color || ''
         });
+        // Implementing multiple markers
+        if(Object.prototype.toString.call( opt.markers ) === '[object Array]' &&
+            typeof opt.markers[0] !== "undefined") {
+            var index, len;
+            for (index = 0, len = opt.markers.length; index < len; ++index) {
+                console.log(opt.markers[index]);
+            }
+        } else {
+            console.log("not implemented yet");
+        }
 
         google.maps.event.addListener(map, 'rightclick', function (event) {
             agmLat.val(event.latLng.lat());
