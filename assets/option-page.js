@@ -287,17 +287,25 @@
             || navigator.maxTouchPoints;       // works on IE10/11 and Surface
     }
 
-    $('#wpt-markers').on('click.agm',  '.remove-button', function (e) {
+    var markers_table = $('#wpt-markers');
+    var fieldsCount = markers_table.find('.remove-button').length;
+    markers_table.on('click.agm',  '.remove-button', function (e) {
         e.preventDefault();
         var $vm = $(this);
+        fieldsCount = markers_table.find('.remove-button').length;
+        if(fieldsCount === 1) {
+            return false;
+        }
         $vm.closest('tr').remove();
         console.log($vm);
     }).on('click.agm', '.add-button', function (e) {
         e.preventDefault();
         var $vm = $(this);
-        var tmpl = template.format("","","","");
+        fieldsCount = markers_table.find('.remove-button').length;
+        var tmpl = template.format(fieldsCount,"","","");
         console.log(tmpl);
         $vm.parent().find('table tbody').append(tmpl);
+        fieldsCount++;
     });
     var template = '<tr><th scope="row">Marker {$0}</th>'+
         '<td><label><input placeholder="Longitude" type="text" name="ank_google_map[markers][{$0}][lat]" value="{$1}"></label></td>'+
