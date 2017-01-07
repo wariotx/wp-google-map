@@ -105,9 +105,7 @@ class Admin
                 'file' => empty($db['marker_file']) ? false : esc_url($db['marker_file'])
             ),
             'styles' => $this->util->get_styles(),
-            'markers' => array(
-                1,2,3
-            )
+            'markers' => $db['markers']
         );
     }
 

@@ -115,7 +115,16 @@
             typeof opt.markers[0] !== "undefined") {
             var index, len;
             for (index = 0, len = opt.markers.length; index < len; ++index) {
-                console.log(opt.markers[index]);
+                // console.log(opt.markers[index]);
+                var marker_d = opt.markers[index];
+                var the_marker = new google.maps.Marker({
+                    draggable: false,
+                    position: new google.maps.LatLng(parseFloat(marker_d.lat), parseFloat(marker_d.long)),
+                    optimized: true,
+                    map: map,
+                    title: marker_d.title,
+                    icon: opt.marker.file || opt.marker.color || ''
+                });
             }
         } else {
             console.log("not implemented yet");
