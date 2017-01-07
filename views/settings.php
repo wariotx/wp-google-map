@@ -10,6 +10,7 @@
             <a class="nav-tab" id="wpt-loc-tab" href="#top#wpt-loc"><?php _e('Location', 'ank-google-map') ?></a>
             <a class="nav-tab" id="wpt-marker-tab" href="#top#wpt-marker"><?php _e('Marker', 'ank-google-map') ?></a>
             <a class="nav-tab" id="wpt-info-tab" href="#top#wpt-info"><?php _e('Info Window', 'ank-google-map') ?></a>
+            <a class="nav-tab" id="wpt-markers-tab" href="#top#wpt-markers"><?php _e('Markers', 'ank-google-map') ?></a>
         </h2>
 
         <form action="<?php echo admin_url('options.php') ?>" method="post" id="agm-form" novalidate>
