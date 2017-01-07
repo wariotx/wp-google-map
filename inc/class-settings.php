@@ -156,6 +156,21 @@ class Settings
             $errors[] = __('Invalid Longitude format', 'ank-google-map');
             $out['map_Lng'] = '0';
         }
+        $out['markers'] = is_array($in['markers']) ? $in['markers'] : array();
+        foreach ($in['markers'] as $key => $marker) {
+            $out['markers'][$key]['lat']   = sanitize_text_field($in['markers'][$key]['lat']);
+            $out['markers'][$key]['long']  = sanitize_text_field($in['markers'][$key]['long']);
+            $out['markers'][$key]['title'] = sanitize_text_field($in['markers'][$key]['title']);
+
+            if (!preg_match("/^[-]?(([0-8]?[0-9])\.(\d+))|(90(\.0+)?)$/", $marker['lat'])) {
+                $errors[] = __('Invalid Latitude format', 'ank-google-map');
+                $out['markers'][$key]['lat'] = '0';
+            }
+            if (!preg_match("/^[-]?((((1[0-7][0-9])|([0-9]?[0-9]))\.(\d+))|180(\.0+)?)$/", $marker['long'])) {
+                $errors[] = __('Invalid Longitude format', 'ank-google-map');
+                $out['markers'][$key]['long'] = '0';
+            }
+        }
 
         $out['map_zoom'] = intval($in['map_zoom']);
 
