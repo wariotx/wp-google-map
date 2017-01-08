@@ -102,14 +102,14 @@
             agmZoom = $('#agm-zoom'),
             agmZoomVal = $('#agm-zoom-val');
 
-        var marker = new google.maps.Marker({
-            draggable: true,
-            position: mapCenter,
-            optimized: false,
-            map: map,
-            title: 'Current Location',
-            icon: opt.marker.file || opt.marker.color || ''
-        });
+        // var marker = new google.maps.Marker({
+        //     draggable: true,
+        //     position: mapCenter,
+        //     optimized: false,
+        //     map: map,
+        //     title: 'Current Location',
+        //     icon: opt.marker.file || opt.marker.color || ''
+        // });
         // Implementing multiple markers
         if(Object.prototype.toString.call( opt.markers ) === '[object Array]' &&
             typeof opt.markers[0] !== "undefined") {
@@ -133,14 +133,14 @@
         google.maps.event.addListener(map, 'rightclick', function (event) {
             agmLat.val(event.latLng.lat());
             agmLng.val(event.latLng.lng());
-            marker.setTitle('Selected Location');
-            marker.setPosition(event.latLng);
+            // marker.setTitle('Selected Location');
+            // marker.setPosition(event.latLng);
         });
 
-        google.maps.event.addListener(marker, 'dragend', function (event) {
-            agmLat.val(event.latLng.lat());
-            agmLng.val(event.latLng.lng());
-        });
+        // google.maps.event.addListener(marker, 'dragend', function (event) {
+        //     agmLat.val(event.latLng.lat());
+        //     agmLng.val(event.latLng.lng());
+        // });
 
         google.maps.event.addListener(map, 'zoom_changed', function () {
             agmZoom.val(map.getZoom());
